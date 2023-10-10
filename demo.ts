@@ -66,6 +66,17 @@ async function demoLegacyTransactionType() {
     console.log(`Legacy transaction receipt`, transactionReceipt);
 }
 
-// Run demos
-demoDynamicFeeTransactionType();
-demoLegacyTransactionType();
+// Wrap both demos in an async function to await their completion
+async function runDemosSequentially() {
+    // Run the first demo and await its completion
+    await demoDynamicFeeTransactionType();
+
+    // Run the second demo and await its completion
+    await demoLegacyTransactionType();
+}
+
+// Run the demos sequentially
+runDemosSequentially().catch((err) => {
+    // Handle any errors that might occur in the demos
+    console.error("An error occurred:", err);
+});
