@@ -41,28 +41,15 @@ npm start
 
 ## Summary
 
-[TODO: Convert into table]
+| Transaction type  | Recommended  | Support | Viem (TS) | Ethers (TS) | ContractKit (TS) | Web3js (TS) | Web3j (Java) | rust-ethers (Rust) | Brownie (Python) |
+|---|---|---|---|---|---|---|---|---|---|
+| Celo dynamic fee transaction type v2  | ✅  | active (>date) | 🟠 | ❌ | ? | ❌ | ❌ | ? | ? |
+| Celo dynamic fee transaction type  | ❌  | deprecation notice (deadline) | ✅ (>vX.X.X) | ❌ | ✅ | ❌ | ❌ | ? | ? |
+| Celo legacy transaction type  | ❌ | active (>date) | ✅ | ❌ | ✅ | ❌ | ❌ | ? | ? |
+| Ethereum dynamic fee transaction type  | ✅ | active (>date) | ✅ | ✅ | ✅ | ❌ | ✅ | ? | ? |
+| Ethereum legacy transaction type  | ❌  | active (>date) | ✅ | ✅ | ✅ | ❌ | ✅ | ? | ✅ |
 
-Transaction type: Celo dynamic fee v2
-Defined in: CIP-64, ...
-Since: Celo Gingerbread hardfork
-Support: active
-Viem: 🟠 (> v...)
-Ethers: ❌ 
-Web3js: ❌
-Contractkit: ✅ (> v...)
-celo-ethers-wrapper: ✅ (> v...)
-
-Transaction type: Celo dynamic fee
-Defined in: CIP-42, ...
-Since: Celo Espresso hardfork
-Support: deprecation notice
-Viem: ✅ (> v...)
-Ethers: ❌
-Web3js: ❌
-Contractkit: ✅ (> v...)
-celo-ethers-wrapper: ✅ (> v...)
-
+Learn more about the transaction types below.
 
 ## Background
 
