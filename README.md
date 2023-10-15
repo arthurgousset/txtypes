@@ -39,6 +39,31 @@ yarn start
 npm start
 ```
 
+## Summary
+
+[TODO: Convert into table]
+
+Transaction type: Celo dynamic fee v2
+Defined in: CIP-64, ...
+Since: Celo Gingerbread hardfork
+Support: active
+Viem: 🟠 (> v...)
+Ethers: ❌ 
+Web3js: ❌
+Contractkit: ✅ (> v...)
+celo-ethers-wrapper: ✅ (> v...)
+
+Transaction type: Celo dynamic fee
+Defined in: CIP-42, ...
+Since: Celo Espresso hardfork
+Support: deprecation notice
+Viem: ✅ (> v...)
+Ethers: ❌
+Web3js: ❌
+Contractkit: ✅ (> v...)
+celo-ethers-wrapper: ✅ (> v...)
+
+
 ## Background
 
 ### History
