@@ -1,10 +1,10 @@
 # Transaction types on Celo
 
+This repo contains an explainer of the transaction types supported on Celo and a demo to make specific transactions.
+
 > **Warning**
 > This repo is for educational purposes only. The information provided here may be inaccurate. 
 > Please don’t rely on it exclusively to implement low-level client libraries.
-
-This repo contains an explainer of the transaction types supported on Celo and a demo to make specific transactions.
 
 Todos:
 
