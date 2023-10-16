@@ -6,13 +6,6 @@ This repo contains an explainer of the transaction types supported on Celo and a
 > This repo is for educational purposes only. The information provided here may be inaccurate. 
 > Please don’t rely on it exclusively to implement low-level client libraries.
 
-Todos:
-
-- [ ] [CHECK: That any valid typed or untyped Ethereum transaction is valid on Celo ?]
-- [ ] [CHECK: Does Celo support 0x00 typed Celo-specific transactions?]
-- [ ] [CHECK: Does Celo support access list with Celo-specific parameters]
-- [ ] [CHECK: Does Celo support access list with legacy gasLimit field instead of EIP-1559]
-
 ## Summary
 
 | Transaction type  | # | Recommended & Supported | Viem (TS) | Ethers (TS) | ContractKit (TS) | Web3js (TS) | Web3j (Java) | rust-ethers (Rust) | Brownie (Python) |
@@ -152,7 +145,7 @@ Ethereum currently supports three EIP-2718 typed transactions ([and the non-type
     -   Defined in [EIP-1559: Fee market change for ETH 1.0 chain](https://eips.ethereum.org/EIPS/eip-1559).
     -   Supported since Ethereum London hard fork on date [Aug, 5 2021](https://ethereum.org/en/history/#london).
 
-### Transaction types supported on Celo
+## Transaction types supported on Celo
 
 Celo currently supports the following transaction types:
 
@@ -272,3 +265,10 @@ yarn start
 # or
 npm start
 ```
+
+## Todos
+
+- [ ] [CHECK: That any valid typed or untyped Ethereum transaction is valid on Celo ?]
+- [ ] [CHECK: Does Celo support 0x00 typed Celo-specific transactions?]
+- [ ] [CHECK: Does Celo support access list with Celo-specific parameters]
+- [ ] [CHECK: Does Celo support access list with legacy gasLimit field instead of EIP-1559]
