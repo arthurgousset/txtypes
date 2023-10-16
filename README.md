@@ -33,7 +33,7 @@ A legacy transaction contained the following transaction parameters:
 -   `data`
 -   `chaindId`
 
-To a produce a valid legacy transaction:
+To produce a valid legacy transaction:
 
 1.  the transaction parameters are [RLP-encoded](https://eth.wiki/fundamentals/rlp): 
 
@@ -143,7 +143,7 @@ Ethereum currently supports three [EIP-2718](https://eips.ethereum.org/EIPS/eip-
         ```
 
     -   Defined in [EIP-1559: Fee market change for ETH 1.0 chain](https://eips.ethereum.org/EIPS/eip-1559).
-    -   Supported since Ethereum London hard fork on date [Aug, 5 2021](https://ethereum.org/en/history/#london).
+    -   Supported since Ethereum London hard fork on [Aug, 5 2021](https://ethereum.org/en/history/#london).
 
 ## Transaction types supported on Celo
 
