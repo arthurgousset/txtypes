@@ -13,39 +13,6 @@ Todos:
 - [ ] [CHECK: Does Celo support access list with Celo-specific parameters]
 - [ ] [CHECK: Does Celo support access list with legacy gasLimit field instead of EIP-1559]
 
-## Usage
-
-### Requirements
-
-- Celo account with 1 CELO and 1 cUSD on Alfajores (you can get free testnet tokens from [faucet.celo.org](https://faucet.celo.org/alfajores))
-- Node.js v18.14.2
-
-### Install dependencies
-
-```sh
-yarn install
-# or
-npm install
-```
-
-### Set up environment variables
-
-Create a `.env` file in the root directory of the project:
-
-```sh
-cp .env.example .env
-```
-
-Paste the private key of an account that has CELO and cUSD on Alfajores into the `.env` file.
-
-### Run the demo
-
-```sh
-yarn start
-# or
-npm start
-```
-
 ## Summary
 
 | Transaction type  | # | Recommended & Supported | Viem (TS) | Ethers (TS) | ContractKit (TS) | Web3js (TS) | Web3j (Java) | rust-ethers (Rust) | Brownie (Python) |
@@ -272,3 +239,36 @@ Celo currently supports the following transaction types:
         [Celo Gingerbread hard fork](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md) 
         on [Sep, 26 2023](https://forum.celo.org/t/mainnet-alfajores-gingerbread-hard-fork-release-sep-26-17-00-utc/6499)
     -   TLDR: this is the Ethereum dynamic fee transaction type (EIP-1559) with one additional Celo-specific parameters (`feecurrency`) instead of three (`feecurrency`, `gatewayfeerecipient`, and `gatewayfee`)
+
+## Demo usage
+
+### Requirements
+
+- Celo account with 1 CELO and 1 cUSD on Alfajores (you can get free testnet tokens from [faucet.celo.org](https://faucet.celo.org/alfajores))
+- Node.js v18.14.2
+
+### Install dependencies
+
+```sh
+yarn install
+# or
+npm install
+```
+
+### Set up environment variables
+
+Create a `.env` file in the root directory of the project:
+
+```sh
+cp .env.example .env
+```
+
+Paste the private key of an account that has CELO and cUSD on Alfajores into the `.env` file.
+
+### Run the demo
+
+```sh
+yarn start
+# or
+npm start
+```
