@@ -1,10 +1,17 @@
 # Transaction types on Celo
 
-> **info**
-> This repo is for educational purposes only. The information provided here may be inaccurate. Please 
-don’t rely on it exclusively to implement low-level client libraries.
+> **Warning**
+> This repo is for educational purposes only. The information provided here may be inaccurate. 
+> Please don’t rely on it exclusively to implement low-level client libraries.
 
 This repo contains a demo and overview of transaction types support on Celo.
+
+Todos:
+
+- [ ] [CHECK: That any valid typed or untyped Ethereum transaction is valid on Celo ?]
+- [ ] [CHECK: Does Celo support 0x00 typed Celo-specific transactions?]
+- [ ] [CHECK: Does Celo support access list with Celo-specific parameters]
+- [ ] [CHECK: Does Celo support access list with legacy gasLimit field instead of EIP-1559]
 
 ## Usage
 
@@ -43,11 +50,11 @@ npm start
 
 | Transaction type  | Recommended  | Support | Viem (TS) | Ethers (TS) | ContractKit (TS) | Web3js (TS) | Web3j (Java) | rust-ethers (Rust) | Brownie (Python) |
 |---|---|---|---|---|---|---|---|---|---|
-| Celo dynamic fee transaction type v2  | ✅  | active (>date) | 🟠 | ❌ | ? | ❌ | ❌ | ? | ? |
-| Celo dynamic fee transaction type  | ❌  | deprecation notice (deadline) | ✅ (>vX.X.X) | ❌ | ✅ | ❌ | ❌ | ? | ? |
-| Celo legacy transaction type  | ❌ | active (>date) | ✅ | ❌ | ✅ | ❌ | ❌ | ? | ? |
-| Ethereum dynamic fee transaction type  | ✅ | active (>date) | ✅ | ✅ | ✅ | ❌ | ✅ | ? | ? |
-| Ethereum legacy transaction type  | ❌  | active (>date) | ✅ | ✅ | ✅ | ❌ | ✅ | ? | ✅ |
+| Celo dynamic fee transaction v2 | ✅  | active (>date) | 🟠 | ❌ | ? | ❌ | ❌ | ? | ? |
+| Celo dynamic fee transaction | ❌ | [deprecation warning](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md#deprecation-warning) | ✅ (>vX.X.X) | ❌ | ✅ | ❌ | ❌ | ? | ? |
+| Celo legacy transaction  | ❌ | active (>date) | ✅ | ❌ | ✅ | ❌ | ❌ | ? | ? |
+| Ethereum dynamic fee transaction | ✅ | active (>date) | ✅ | ✅ | ✅ | ❌ | ✅ | ? | ? |
+| Ethereum legacy transaction | ❌ | active (>date) | ✅ | ✅ | ✅ | ❌ | ✅ | ? | ✅ |
 
 Learn more about the transaction types below.
 
@@ -138,8 +145,8 @@ Ethereum currently supports three EIP-2718 typed transactions ([and the non-type
         0x00 || RLP([nonce, gasprice, gaslimit, recipient, amount, data, v, r, s])
         ```
     
-    -   Defined in [EIP-2718: Typed Transaction Envelope](https://eips.ethereum.org/EIPS/eip-2718)
-    -   Supported since [CHECK: Ethereum Berlin hardfork on date ?]
+    -   Defined in [EIP-2718: Typed Transaction Envelope](https://eips.ethereum.org/EIPS/eip-2718).
+    -   Supported since Ethereum Berlin hard fork on [Apr, 15 2021](https://ethereum.org/en/history/#berlin).
 
 1.  Access list transaction type
 
@@ -156,8 +163,8 @@ Ethereum currently supports three EIP-2718 typed transactions ([and the non-type
         0x01 || ...
         ```
 
-    -   Defined in [EIP-2930: Optional access lists](https://eips.ethereum.org/EIPS/eip-2930)
-    -   Supported since [CHECK: Ethereum London hardfork on date ?]
+    -   Defined in [EIP-2930: Optional access lists](https://eips.ethereum.org/EIPS/eip-2930).
+    -   Supported since Ethereum Berlin hard fork on [Apr, 15 2021](https://ethereum.org/en/history/#berlin).
 
 
 1.  Dynamic fee transaction type
@@ -175,8 +182,8 @@ Ethereum currently supports three EIP-2718 typed transactions ([and the non-type
         0x02 || RLP([chainId, nonce, maxPriorityFeePerGas, maxFeePerGas, gasLimit, to, value, data, accessList, signatureYParity, signatureR, signatureS])
         ```
 
-    -   Defined in [EIP-1559: Fee market change for ETH 1.0 chain](https://eips.ethereum.org/EIPS/eip-1559)
-    -   Supported since [CHECK: Ethereum London hardfork on date ?]
+    -   Defined in [EIP-1559: Fee market change for ETH 1.0 chain](https://eips.ethereum.org/EIPS/eip-1559).
+    -   Supported since Ethereum London hard fork on date [Aug, 5 2021](https://ethereum.org/en/history/#london).
 
 ### Transaction types supported on Celo
 
@@ -190,12 +197,12 @@ Celo currently supports the following transaction types:
         RLP([nonce, gasprice, gaslimit, feecurrency, gatewayfeerecipient, gatewayfee, recipient, amount, data, v, r, s])
         ```
     
-    -   Defined in Celo blockchain client release ([v1.0.0](https://github.com/celo-org/celo-blockchain/tree/celo-v1.0.0))
-    -   Supported since [CHECK: Celo Mainnet launch on date ?]
-    -   TLDR: this is the Ethereum legacy transaction type with three additional Celo-specific parameters (`feecurrency`, `gatewayfeerecipient`, and `gatewayfee`)
+    -   Defined in Celo blockchain client release [v1.0.0](https://github.com/celo-org/celo-blockchain/tree/celo-v1.0.0).
+    -   Supported since Celo Mainnet launch on [Apr, 22 2020](https://dune.com/queries/3106924/5185945).
+    -   TLDR: this is the Ethereum legacy transaction type with three additional Celo-specific parameters (`feecurrency`, `gatewayfeerecipient`, and `gatewayfee`).
 
 1.  Ethereum legacy transaction 
-    -   transaction type: `none` (not EIP-2718 compliant)
+    -   transaction type: `0x00` (not EIP-2718 compliant)
     -   a valid transaction is thus:
 
         ```
@@ -221,7 +228,9 @@ Celo currently supports the following transaction types:
         ```
     
     -   Defined in [CIP-42: Modification to EIP-1559](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0042.md)
-    -   Supported since [CHECK: Celo Espresso hardfork on date ?]
+    -   Supported since 
+        [Celo Espresso hard fork](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0041.md)
+        on [Mar, 8 2022](https://blog.celo.org/brewing-the-espresso-hardfork-92a696af1a17).
     -   TLDR: this is the Ethereum dynamic fee transaction type (EIP-1559) with three additional Celo-specific parameters (`feecurrency`, `gatewayfeerecipient`, and `gatewayfee`)
 
 1.  Ethereum dynamic fee transaction type
@@ -239,7 +248,9 @@ Celo currently supports the following transaction types:
         ```
     
     -   Defined in [CIP-42: Modification to EIP-1559](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0042.md)
-    -   Supported since [CHECK: Espresso hardfork on date ?]
+    -   Supported since 
+        [Celo Espresso hard fork](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0041.md)
+        on [Mar, 8 2022](https://blog.celo.org/brewing-the-espresso-hardfork-92a696af1a17).
     -   TLDR: this is the Ethereum dynamic fee transaction type (EIP-1559) without any Celo-specific parameters.
 
 1.  Celo dynamic fee transaction type v2
@@ -257,10 +268,7 @@ Celo currently supports the following transaction types:
         ```
     
     -   Defined in [CIP-64: New Transaction Type: Celo Dynamic Fee v2](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0064.md)
-    -   Supported since [CHECK: Celo Gingerbread hardfork on date ?]
+    -   Supported since 
+        [Celo Gingerbread hard fork](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md) 
+        on [Sep, 26 2023](https://forum.celo.org/t/mainnet-alfajores-gingerbread-hard-fork-release-sep-26-17-00-utc/6499)
     -   TLDR: this is the Ethereum dynamic fee transaction type (EIP-1559) with one additional Celo-specific parameters (`feecurrency`) instead of three (`feecurrency`, `gatewayfeerecipient`, and `gatewayfee`)
-
-[CHECK: That means any valid typed or untyped Ethereum transaction is valid on Celo ?]
-[CHECK: Does Celo support 0x00 typed Celo-specific transactions?]
-[CHECK: Does Celo support access list with Celo-specific parameters]
-[CHECK: Does Celo support access list with legacy gasLimit field instead of EIP-1559]
