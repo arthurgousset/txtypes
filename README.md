@@ -14,7 +14,7 @@ This repo contains an explainer of the transaction types supported on Celo and a
 | Ethereum dynamic fee transaction ([CIP-42](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0042.md)) | `2` | 👍 / active | ✅ | ✅ | ✅ (>[v5.0.0](https://github.com/celo-org/celo-monorepo/releases/tag/v5.0)) | ❌ | ✅ | ? | ? |
 | Celo dynamic fee transaction ([CIP-42](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0042.md)) | `124` | 👎 / [deprecation warning](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md#deprecation-warning) ⚠️ | ✅ (>[v1.2.8](https://github.com/wagmi-dev/viem/blob/main/src/CHANGELOG.md#128)) | ❌ | ✅ (>[v5.0.0](https://github.com/celo-org/celo-monorepo/releases/tag/v5.0)) | ❌ | ❌ | ? | ? |
 | Celo legacy transaction  | `0` | 👎 / active | ✅ | ❌ | ✅ | ❌ | ❌ | ? | ? |
-| Ethereum legacy transaction ([CIP35](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0035.md)) | `0` | 👎 / active | ✅ | ✅ | ✅ | ❌ | ✅ | ? | ✅ |
+| Ethereum legacy transaction ([CIP-35](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0035.md)) | `0` | 👎 / active | ✅ | ✅ | ✅ | ❌ | ✅ | ? | ✅ |
 
 Learn more about the transaction types below.
 
@@ -169,7 +169,7 @@ Celo currently supports the following transaction types:
         RLP([nonce, gasprice, gaslimit, recipient, amount, data, v, r, s])
         ```
     
-    -   Defined in [CIP35: Support for Ethereum-compatible transactions](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0035.md)
+    -   Defined in [CIP-35: Support for Ethereum-compatible transactions](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0035.md)
     -   Supported since [CHECK: Celo Espresso hardfork on date ?]
     -   TLDR: this is the Ethereum legacy transaction type without any Celo-specific parameters.
 
