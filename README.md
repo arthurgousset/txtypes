@@ -89,7 +89,7 @@ Every subsequently proposed transaction type is defined in an EIP and identified
 
 ### Transaction types supported on Ethereum
 
-Ethereum currently supports three EIP-2718 typed transactions ([and the non-typed legacy transaction format?]), namely:
+Ethereum currently supports three [EIP-2718](https://eips.ethereum.org/EIPS/eip-2718) typed transaction, namely:
 
 1.  Legacy transaction
     -   transaction type: `0x00` (0)
