@@ -73,7 +73,7 @@ A legacy transaction contained the following transaction parameters:
 -   `data`
 -   `chaindId`
 
-To a produce a valid transaction:
+To a produce a valid legacy transaction:
 
 1.  the transaction parameters are [RLP-encoded](https://eth.wiki/fundamentals/rlp): 
 
@@ -81,15 +81,15 @@ To a produce a valid transaction:
     RLP([nonce, gasprice, gaslimit, recipient, amount, data, chaindId, 0, 0])
     ```
 
-1.  the RLP-encoded (and unsigned) transaction is hashed using keccak256.
+1.  the RLP-encoded transaction is hashed (using Keccak256).
 1.  the hash is signed with a private key using the ECDSA algorithm, which generates the `v`, `r`, and `s` signature parameters.
-1.  the transaction and signature parameters above are RLP-encoded, which produces a valid signed transaction: 
+1.  the transaction _and_ signature parameters above are RLP-encoded to produce a valid signed transaction:
 
     ```
     RLP([nonce, gasprice, gaslimit, recipient, amount, data, v, r, s])
     ```
 
-1.  a valid signed transaction can be used on-chain, and its transaction and signature parameters can be parsed by simply RLP-decoding the transaction.
+A valid and signed transaction can then be submitted on-chain, and its raw parameters above can be parsed by simply RLP-decoding the transaction.
 
 ### Backwards-compatibility
 
