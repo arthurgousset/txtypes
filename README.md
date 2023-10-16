@@ -51,7 +51,7 @@ npm start
 | Transaction type  | Recommended  | Support | Viem (TS) | Ethers (TS) | ContractKit (TS) | Web3js (TS) | Web3j (Java) | rust-ethers (Rust) | Brownie (Python) |
 |---|---|---|---|---|---|---|---|---|---|
 | Celo dynamic fee transaction v2 | ✅  | active | 🟠 | ❌ | ? | ❌ | ❌ | ? | ? |
-| Celo dynamic fee transaction | ❌ | ⚠️ [deprecation warning](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md#deprecation-warning) ⚠️ | ✅ (>vX.X.X) | ❌ | ✅ | ❌ | ❌ | ? | ? |
+| Celo dynamic fee transaction | ❌ | [deprecation warning](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md#deprecation-warning) ⚠️ | ✅ (>vX.X.X) | ❌ | ✅ | ❌ | ❌ | ? | ? |
 | Celo legacy transaction  | ❌ | active | ✅ | ❌ | ✅ | ❌ | ❌ | ? | ? |
 | Ethereum dynamic fee transaction | ✅ | active | ✅ | ✅ | ✅ | ❌ | ✅ | ? | ? |
 | Ethereum legacy transaction | ❌ | active | ✅ | ✅ | ✅ | ❌ | ✅ | ? | ✅ |
