@@ -8,13 +8,15 @@ This repo contains an explainer of the transaction types supported on Celo and a
 
 ## Summary
 
-| Transaction type  | # | Recommended & Supported | Viem (TS) | Ethers (TS) | ContractKit (TS) | Web3js (TS) | Web3j (Java) | rust-ethers (Rust) | Brownie (Python) |
-|---|---|---|---|---|---|---|---|---|---|
-| Celo dynamic fee transaction v2 ([CIP-64](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0064.md)) | `123` | 👍 / active | ❌ | ❌ | ? | ❌ | ❌ | ? | ? |
-| Ethereum dynamic fee transaction ([CIP-42](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0042.md)) | `2` | 👍 / active | ✅ | ✅ | ✅ (>[v5.0.0](https://github.com/celo-org/celo-monorepo/releases/tag/v5.0)) | ❌ | ✅ | ? | ? |
-| Celo dynamic fee transaction ([CIP-42](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0042.md)) | `124` | 👎 / [deprecation warning](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md#deprecation-warning) ⚠️ | ✅ (>[v1.2.8](https://github.com/wagmi-dev/viem/blob/main/src/CHANGELOG.md#128)) | ❌ | ✅ (>[v5.0.0](https://github.com/celo-org/celo-monorepo/releases/tag/v5.0)) | ❌ | ❌ | ? | ? |
-| Celo legacy transaction  | `0` | 👎 / active | ✅ | ❌ | ✅ | ❌ | ❌ | ? | ? |
-| Ethereum legacy transaction ([CIP-35](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0035.md)) | `0` | 👎 / active | ✅ | ✅ | ✅ | ❌ | ✅ | ? | ✅ |
+
+
+| Chain | Transaction type  | # | Recommended & Supported | Viem (TS) | Ethers (TS) | ContractKit (TS) | Web3js (TS) | Web3j (Java) | rust-ethers (Rust) | Brownie (Python) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| <img width="20" src="assets/images/Celo.png"> | Celo dynamic fee transaction v2 ([CIP-64](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0064.md)) | `123` | 👍 / active | ❌ | ❌ | ? | ❌ | ❌ | ? | ? |
+| <img width="20" src="assets/images/Ethereum.png"> | Ethereum dynamic fee transaction ([CIP-42](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0042.md)) | `2` | 👍 / active | ✅ | ✅ | ✅ (>[v5.0.0](https://github.com/celo-org/celo-monorepo/releases/tag/v5.0)) |  ✅ | ✅ | ? | ? |
+| <img width="20" src="assets/images/Ethereum.png"> | Ethereum legacy transaction ([CIP-35](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0035.md)) | `0` | 👎 / active | ✅ | ✅ | ✅ | ✅ | ✅ | ? | ✅ |
+| <img width="20" src="assets/images/Celo.png"> | Celo dynamic fee transaction ([CIP-42](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0042.md)) | `124` | 👎 / [deprecation warning](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md#deprecation-warning) ⚠️ | ✅ (>[v1.2.8](https://github.com/wagmi-dev/viem/blob/main/src/CHANGELOG.md#128)) | ❌ | ✅ (>[v5.0.0](https://github.com/celo-org/celo-monorepo/releases/tag/v5.0)) | ❌ | ❌ | ? | ? |
+| <img width="20" src="assets/images/Celo.png"> | Celo legacy transaction | `0` | 👎 / [deprecation warning](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md#deprecation-warning) ⚠️ | ✅ | ❌ | ✅ | ❌ | ❌ | ? | ? |
 
 Learn more about the transaction types below.
 
