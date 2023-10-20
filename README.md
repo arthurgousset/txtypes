@@ -270,7 +270,11 @@ npm start
 
 ## Todos
 
-- [ ] [CHECK: That any valid typed or untyped Ethereum transaction is valid on Celo ?]
-- [ ] [CHECK: Does Celo support 0x00 typed Celo-specific transactions?]
-- [ ] [CHECK: Does Celo support access list with Celo-specific parameters]
-- [ ] [CHECK: Does Celo support access list with legacy gasLimit field instead of EIP-1559]
+-   [x] CHECK: That any valid typed or untyped Ethereum transaction is valid on Celo ?
+    All transactions (legacy and newly typed Ethereum transactions) are valid on Celo
+-   [x] CHECK: Does Celo support 0x00 typed Celo-specific transactions?
+    Yes, there is no specific 0x00 typed transactions, legacy transactions are simply accepted and implied to be of type 0 (althought they are not prefixed with `0x00 || ...`)
+-   [x] CHECK: Does Celo support access list with Celo-specific parameters
+    No, Celo only supports accessList via EIP-1559 Ethereum transactions (type 0x02) and Celo dynamic fee v2 transactions (type 0x7b), there is no Celo-specific access list transaction type (with the legacy format, i.e. no max gas fee and Celo-specific parameters)
+-   [x] CHECK: Does Celo support access list with legacy gasLimit field instead of EIP-1559
+    Yes, Celo supports access list in Ethereum access list transcactions (i.e. with legacy gasLimit field instead of EIP-1559)
