@@ -1,11 +1,10 @@
 import {
     createPublicClient,
     createWalletClient,
+    hexToBigInt,
     http,
     parseEther,
     parseGwei,
-    parseTransaction,
-    serializeTransaction,
 } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
 import { celoAlfajores } from "viem/chains";
@@ -29,7 +28,9 @@ const client = createWalletClient({
 });
 
 /**
- * Legacy transaction type
+ * Transation type: 0 (0x00)
+ * Name: "Legacy"
+ * Description: Ethereum legacy transaction
  */
 async function demoLegacyTransactionType() {
     console.log(`Initiating legacy transaction...`);
@@ -53,7 +54,9 @@ async function demoLegacyTransactionType() {
 }
 
 /**
- * Dynamic fee transaction type (EIP-1559)
+ * Transaction type: 2 (0x02)
+ * Name: "Dynamic fee"
+ * Description: Ethereum EIP-1559 transaction
  */
 async function demoDynamicFeeTransactionType() {
     console.log(`Initiating dynamic fee (EIP-1559) transaction...`);
@@ -81,11 +84,44 @@ async function demoDynamicFeeTransactionType() {
     );
 }
 
+/**
+ * Transaction type: 124 (0x7c)
+ * Name: "Custom fee currency"
+ * Description: Celo fee currency transaction
+ */
+async function demoFeeCurrencyTransactionType() {
+    console.log(`Initiating custom fee currency transaction...`);
+    const transactionHash = await client.sendTransaction({
+        account, // Sender
+        to: "0x70997970c51812dc3a010c7d01b50e0d17dc79c8", // Recipient (illustrative address)
+        value: parseEther("0.01"), // 0.01 CELO
+        feeCurrency: "0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1", // cUSD fee currency
+        maxFeePerGas: parseGwei("10"), // Special field for dynamic fee transaction type (EIP-1559)
+        maxPriorityFeePerGas: parseGwei("10"), // Special field for dynamic fee transaction type (EIP-1559)
+    });
+    console.log(`Custom fee currency transaction:`, transactionHash, "\n");
+
+    const transactionReceipt = await publicClient.waitForTransactionReceipt({
+        hash: await transactionHash,
+    });
+    console.log(
+        `Custom fee currency transaction receipt`,
+        transactionReceipt,
+        "\n"
+    );
+    console.log(
+        `See in explorer:`,
+        `${EXPLORER_URL}${transactionReceipt.transactionHash}`,
+        "\n"
+    );
+}
+
 // Wrap both demos in an async function to await their completion
 async function runDemosSequentially() {
     // Run each demo and await its completion
-    await demoLegacyTransactionType();
-    await demoDynamicFeeTransactionType();
+    // await demoLegacyTransactionType();
+    // await demoDynamicFeeTransactionType();
+    await demoFeeCurrencyTransactionType();
 }
 
 // Run the demos sequentially
