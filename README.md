@@ -261,10 +261,141 @@ Paste the private key of an account that has CELO and cUSD on Alfajores into the
 ### Run the demo
 
 ```sh
-yarn start
+yarn demo
 # or
-npm start
+npm demo
 ```
+
+### [Legacy transaction demo](https://alfajores.celoscan.io/tx/0x4d208ed5c8949255b1dd7fb865dc27ffbdcc35bb7239174272ebfd2b37ec3d5b)
+
+```sh
+~/Documents/txtypes main $ yarn demo
+yarn run v1.22.19
+$ ts-node demo.ts
+Initiating legacy transaction...
+Legacy transaction: 0x4d208ed5c8949255b1dd7fb865dc27ffbdcc35bb7239174272ebfd2b37ec3d5b 
+
+Legacy transaction receipt {
+  blockHash: '0x8c17c2ca9d4e2134c6ee14c55a516e9b59aa341647c6e8719a455f1cd4ca4123',
+  blockNumber: 20542443n,
+  contractAddress: null,
+  cumulativeGasUsed: 21000n,
+  effectiveGasPrice: 20000000000n,
+  from: '0x303c22e6ef01cba9d03259248863836cb91336d5',
+  gasUsed: 21000n,
+  logs: [],
+  logsBloom: '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
+  status: 'success',
+  to: '0x70997970c51812dc3a010c7d01b50e0d17dc79c8',
+  transactionHash: '0x4d208ed5c8949255b1dd7fb865dc27ffbdcc35bb7239174272ebfd2b37ec3d5b',
+  transactionIndex: 0,
+  type: 'legacy',
+  feeCurrency: undefined,
+  gatewayFee: null,
+  gatewayFeeRecipient: undefined
+} 
+
+See in explorer: https://alfajores.celoscan.io/tx/0x4d208ed5c8949255b1dd7fb865dc27ffbdcc35bb7239174272ebfd2b37ec3d5b 
+
+✨  Done in 11.10s.
+```
+
+<img width="650" src="assets/images/LegacyTransactionScreenshot.png">
+
+### [Dynamic fee transaction demo](https://alfajores.celoscan.io/tx/0x46e31fd929e14e5cc3eeefc565a3a87e3c973f737f075c410ebe38f83078ee75)
+
+```sh
+~/Documents/txtypes main $ yarn demo
+yarn run v1.22.19
+$ ts-node demo.ts
+Initiating dynamic fee (EIP-1559) transaction...
+Dynamic fee (EIP-1559) transaction: 0x46e31fd929e14e5cc3eeefc565a3a87e3c973f737f075c410ebe38f83078ee75 
+
+Dynamic fee (EIP-1559) transaction receipt {
+  blockHash: '0x4c395840bf21e858a2dc4798305f569598d79b0b07f3e7eda5e92ae301037645',
+  blockNumber: 20542481n,
+  contractAddress: null,
+  cumulativeGasUsed: 21000n,
+  effectiveGasPrice: 10000000000n,
+  from: '0x303c22e6ef01cba9d03259248863836cb91336d5',
+  gasUsed: 21000n,
+  logs: [],
+  logsBloom: '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
+  status: 'success',
+  to: '0x70997970c51812dc3a010c7d01b50e0d17dc79c8',
+  transactionHash: '0x46e31fd929e14e5cc3eeefc565a3a87e3c973f737f075c410ebe38f83078ee75',
+  transactionIndex: 0,
+  type: 'eip1559',
+  feeCurrency: undefined,
+  gatewayFee: null,
+  gatewayFeeRecipient: undefined
+} 
+
+See in explorer: https://alfajores.celoscan.io/tx/0x46e31fd929e14e5cc3eeefc565a3a87e3c973f737f075c410ebe38f83078ee75 
+
+✨  Done in 11.16s.
+```
+
+<img width="650" src="assets/images/DynamicFeeTransactionScreenshot.png">
+
+### [Custom fee currency demo](https://explorer.celo.org/alfajores/tx/0xa708ae8884219523f0414a84204b2040226ae34766f325d69241f5d76fcc6e1b)
+
+```sh
+~/Documents/txtypes main $ yarn demo
+yarn run v1.22.19
+$ ts-node demo.ts
+Initiating custom fee currency transaction...
+Custom fee currency transaction: 0xa708ae8884219523f0414a84204b2040226ae34766f325d69241f5d76fcc6e1b 
+
+Custom fee currency transaction receipt {
+  blockHash: '0xe6f7c202a946ea06d2ebc2032cb82a58822f1a6110afdb9cf3818d827b3fc173',
+  blockNumber: 20542764n,
+  contractAddress: null,
+  cumulativeGasUsed: 71000n,
+  effectiveGasPrice: 10000000000n,
+  from: '0x303c22e6ef01cba9d03259248863836cb91336d5',
+  gasUsed: 71000n,
+  logs: [
+    {
+      address: '0x874069fa1eb16d44d622f2e0ca25eea172369bc1',
+      topics: [Array],
+      data: '0x000000000000000000000000000000000000000000000000000091ca56b12be8',
+      blockNumber: 20542764n,
+      transactionHash: '0xa708ae8884219523f0414a84204b2040226ae34766f325d69241f5d76fcc6e1b',
+      transactionIndex: 0,
+      blockHash: '0xe6f7c202a946ea06d2ebc2032cb82a58822f1a6110afdb9cf3818d827b3fc173',
+      logIndex: 0,
+      removed: false
+    },
+    {
+      address: '0x874069fa1eb16d44d622f2e0ca25eea172369bc1',
+      topics: [Array],
+      data: '0x0000000000000000000000000000000000000000000000000001f3f36b193418',
+      blockNumber: 20542764n,
+      transactionHash: '0xa708ae8884219523f0414a84204b2040226ae34766f325d69241f5d76fcc6e1b',
+      transactionIndex: 0,
+      blockHash: '0xe6f7c202a946ea06d2ebc2032cb82a58822f1a6110afdb9cf3818d827b3fc173',
+      logIndex: 1,
+      removed: false
+    }
+  ],
+  logsBloom: '0x00000000080000000000000000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000000100000000000000000000000000008000000000000000000000000000008000000000000000000000000000000000000000000000000800000000000000011000000000000000800000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000202000000000000008008000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000',
+  status: 'success',
+  to: '0x70997970c51812dc3a010c7d01b50e0d17dc79c8',
+  transactionHash: '0xa708ae8884219523f0414a84204b2040226ae34766f325d69241f5d76fcc6e1b',
+  transactionIndex: 0,
+  type: '0x7c',
+  feeCurrency: undefined,
+  gatewayFee: null,
+  gatewayFeeRecipient: undefined
+} 
+
+See in explorer: https://explorer.celo.org/alfajores/tx/0xa708ae8884219523f0414a84204b2040226ae34766f325d69241f5d76fcc6e1b 
+
+✨  Done in 11.19s.
+```
+
+<img width="650" src="assets/images/CustomFeeCurrencyTransactionScreenshot.png">
 
 ## Todos
 
