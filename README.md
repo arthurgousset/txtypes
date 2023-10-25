@@ -55,18 +55,11 @@ Legend:
 
 ## Background
 
-### History
+### Legacy transactions
 
 Ethereum originally had one format for transactions (now called "legacy transactions"). 
 A legacy transaction contains the following transaction parameters:
-
--   `nonce`
--   `gasPrice`
--   `gasLimit`
--   `recipient`
--   `amount`
--   `data`
--   `chaindId`
+`nonce`, `gasPrice`, `gasLimit`, `recipient`, `amount`, `data`, and `chaindId`.
 
 To produce a valid "legacy transaction":
 
@@ -88,10 +81,10 @@ To produce a valid "legacy transaction":
     RLP([nonce, gasprice, gaslimit, recipient, amount, data, v, r, s])
     ```
 
-A valid signed transaction can then be submitted on-chain, and its raw parameters above can be 
-parsed by simply RLP-decoding the transaction.
+A valid signed transaction can then be submitted on-chain, and its raw parameters can be 
+parsed by RLP-decoding the transaction.
 
-### Backwards-compatibility
+### Typed transactions
 
 Over time, the Ethereum community has sought to add new types of transactions 
 such as dynamic fee transactions 
@@ -100,207 +93,152 @@ or optional access list transactions
 ([EIP-2930: Optional access lists](https://eips.ethereum.org/EIPS/eip-2930)) 
 to supported new desired behaviors on the network.
 
-To allow new types of transactions to be supported without affecting the legacy transaction format, 
-the concept of **typed transactions** was proposed in 
+To allow new transactions to be supported without breaking support with the 
+legacy transaction format, the concept of **typed transactions** was proposed in 
 [EIP-2718: Typed Transaction Envelope](https://eips.ethereum.org/EIPS/eip-2718), which introduces 
-a new high-level transaction format to implement all future transaction types.
+a new high-level transaction format that is used to implement all future transaction types.
 
-### Typed transactions
+### Distinguishing between legacy and typed transactions
 
-Whereas valid "legacy transactions" are the RLP-encoded and signed list of transaction parameters 
-(seen above), valid "typed transactions" are simply a concatenated:
+Whereas a valid "legacy transaction" is simply an RLP-encoded list of 
+**transaction parameters**, a valid "typed transactions" is an arbitrary byte array 
+prepended with a **transaction type**, where:
 
--   **transaction type**, which is a number between 0 (`0x00`) and 128 (`0x7f`) representing 
+-   a **transaction type**, is a number between 0 (`0x00`) and 127 (`0x7f`) representing 
     the type of the transaction, and
 
--   **transaction payload**, which is arbitrary byte data that encodes raw transaction parameters 
-    complying with the specified transaction type.
+-   a **transaction payload**, is arbitrary byte data that encodes raw transaction parameters 
+    is compliance with the specified transaction type.
 
-For example, legacy transactions are now called "type 0 transactions" because they are identified 
-by the transaction type number 0 (or `0x00`) and are defined as follows:
+To distinguish between legacy transactions and typed transactions at the client level, 
+the EIP designers observed that the **first byte** of a legacy transaction would never be in the range 
+`[0, 0x7f]` (or `[0, 127]`), and instead always be in the range `[0xc0, 0xfe]` (or `[192, 254]`). 
 
--   transaction type: `0x00`
+With that observation, transactions can be decoded with the following heuristic:
 
--   transaction payload:
+-   read the first byte of a transaction
+-   if it's bigger than `0x7f` (`127`), then it's a **legacy transaction**. To decode it you, 
+    must read _all_ bytes (including the first byte just read) and interpret them as a 
+    legacy transaction.
+-   else, if it's smaller or equal to `0x7f` (`127`), then it's a **typed transaction**. To decode
+    it you must read the _remaining_ bytes (excluding the first byte just read) and interpret them
+    according to the specified transaction type.
+
+Every transaction type is defined in an EIP, which specifies how to _encode_ as well as _decode_ 
+transaction payloads. This means that a typed transaction can only be interpreted with knowledge of 
+its transaction type and a relevant decoder.
+
+## List of transaction types on Celo
+
+### <img width="12" src="assets/images/Ethereum.png"> Legacy transaction (`0`)
+
+> **Info**
+> This transaction type is 100% compatible with Ethereum and has no Celo-specific parameters.
+
+Although legacy transactions are never formally prepended with the `0x00` transaction type, 
+they are commonly referred to as "type 0" transactions.
+
+-   This transaction is defined as follows:
 
     ```
     RLP([nonce, gasprice, gaslimit, recipient, amount, data, v, r, s])
     ```
 
-A valid transaction is thus:
+-   It was introduced on Ethereum during Mainnet launch on [date CHECK] as specified in the
+    [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf).
 
-```
-0x00 || RLP([nonce, gasprice, gaslimit, recipient, amount, data, v, r, s])
-```
+-   It was introduced on Celo [during CHECK] on [date CHECK] as specified in 
+    [CIP-35: Support for Ethereum-compatible transactions](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0035.md).
 
-where `||` is the byte concatenation operator.
+### <img width="12" src="assets/images/Ethereum.png"> Access list transaction (`1`)
 
-Every subsequently proposed transaction type is defined in an EIP and identified by a unique 
-transaction type between 0 and 128. Such EIPs typically specify how a valid transaction payload 
-is constructed, which means that the transaction payload of a typed transaction can only be 
-interpreted with knowledge of the transaction type.
+> **Info**
+> This transaction type is 100% compatible with Ethereum and has no Celo-specific parameters.
 
-### Transaction types supported on Ethereum
+-   This transaction is defined as follows:
 
-Ethereum currently supports three [EIP-2718](https://eips.ethereum.org/EIPS/eip-2718) typed 
-transaction, namely:
+    ```
+    0x01 || RLP([chainId, nonce, gasPrice, gasLimit, to, value, data, accessList, signatureYParity, signatureR, signatureS])
+    ```
 
-1.  Legacy transaction
-    -   transaction type: `0x00` (0)
-    -   transaction payload:
+-   It was introduced on Ethereum during the Ethereum Berlin hard fork on 
+    [Apr, 15 2021](https://ethereum.org/en/history/#berlin) as specified in 
+    [EIP-2930: Optional access lists](https://eips.ethereum.org/EIPS/eip-2930).
 
-        ```
-        RLP([nonce, gasprice, gaslimit, recipient, amount, data, v, r, s])
-        ```
+-   It was introduced on Celo [during CHECK] on [date CHECK] as specified in 
+    [CIP-35: Support for Ethereum-compatible transactions](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0035.md).
+
+### <img width="12" src="assets/images/Ethereum.png"> Dynamic fee transaction (`2`)
+
+> **Info**
+> This transaction type is 100% compatible with Ethereum and has no Celo-specific parameters.
+
+-   This transaction is defined as follows:
+
+    ```
+    0x02 || RLP([chainId, nonce, maxPriorityFeePerGas, maxFeePerGas, gasLimit, to, value, data, accessList, signatureYParity, signatureR, signatureS])
+    ```
     
-    -   a valid transaction is thus:
+-   It was introduced on Ethereum during the Ethereum London hard fork on 
+    [Aug, 5 2021](https://ethereum.org/en/history/#london) as specified in
+    [EIP-1559: Fee market change for ETH 1.0 chain](https://eips.ethereum.org/EIPS/eip-1559).
 
-        ```
-        0x00 || RLP([nonce, gasprice, gaslimit, recipient, amount, data, v, r, s])
-        ```
+-   It was introduced on Celo during the
+    [Celo Espresso hard fork](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0041.md)
+    on [Mar, 8 2022](https://blog.celo.org/brewing-the-espresso-hardfork-92a696af1a17) as specified
+    in [CIP-42: Modification to EIP-1559](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0042.md)
+
+### <img width="14" src="assets/images/Celo.png"> Legacy transaction (`0`)
+
+> **Info**
+> This transaction is not compatible with Ethereum and has three Celo-specific 
+> parameters: `feecurrency`, `gatewayfeerecipient`, and `gatewayfee`.
+
+-   This transaction is defined as follows:
+
+    ```
+    RLP([nonce, gasprice, gaslimit, feecurrency, gatewayfeerecipient, gatewayfee, recipient, amount, data, v, r, s])
+    ```
     
-    -   Defined in 
-        [EIP-2718: Typed Transaction Envelope](https://eips.ethereum.org/EIPS/eip-2718).
-    -   Supported since Ethereum Berlin hard fork on 
-        [Apr, 15 2021](https://ethereum.org/en/history/#berlin).
+-   It was introduced on Celo during Mainnet launch on 
+    [Apr, 22 2020](https://dune.com/queries/3106924/5185945) as specified in 
+    [Blockchain client v1.0.0](https://github.com/celo-org/celo-blockchain/tree/celo-v1.0.0).
 
-1.  Access list transaction
+### <img width="14" src="assets/images/Celo.png"> Dynamic fee transaction (`124`)
 
-    -   transaction type: `0x01` (1)
-    -   transaction payload:
+> **Info**
+> This transaction is not compatible with Ethereum and has three Celo-specific 
+> parameters: `feecurrency`, `gatewayfeerecipient`, and `gatewayfee`.
 
-        ```
-        ...
-        ```
+-   This transaction is defined as follows:
+
+    ```
+    0x7c || RLP([chain_id, nonce, max_priority_fee_per_gas, max_fee_per_gas, gas_limit, feecurrency, gatewayfeerecipient, gatewayfee, destination, amount, data, access_list, v, r, s])
+    ```
     
-    -   a valid transaction is thus:
+-   It was introduced on Celo during the 
+    [Celo Espresso hard fork](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0041.md)
+    on [Mar, 8 2022](https://blog.celo.org/brewing-the-espresso-hardfork-92a696af1a17) as specified 
+    in [CIP-42: Modification to EIP-1559](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0042.md).
 
-        ```
-        0x01 || ...
-        ```
+### <img width="14" src="assets/images/Celo.png"> Dynamic fee transaction v2 (`123`)
 
-    -   Defined in [EIP-2930: Optional access lists](https://eips.ethereum.org/EIPS/eip-2930).
-    -   Supported since Ethereum Berlin hard fork on 
-        [Apr, 15 2021](https://ethereum.org/en/history/#berlin).
+> **Info**
+> This transaction is not compatible with Ethereum and has one Celo-specific 
+> parameter: `feecurrency`.
 
+-   This transaction is defined as follows:
 
-1.  Dynamic fee transaction
+    ```
+    0x7b || RLP([chainId, nonce, maxPriorityFeePerGas, maxFeePerGas, gasLimit, to, value, data, accessList, feeCurrency, v, r, s])
+    ```
 
-    -   transaction type: `0x02` (2)
-    -   transaction payload:
+-   It was introduced on Celo during the 
+    [Celo Gingerbread hard fork](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md) 
+    on [Sep, 26 2023](https://forum.celo.org/t/mainnet-alfajores-gingerbread-hard-fork-release-sep-26-17-00-utc/6499)
+    as specified in 
+    [CIP-64: New Transaction Type: Celo Dynamic Fee v2](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0064.md)
 
-        ```
-        RLP([chainId, nonce, maxPriorityFeePerGas, maxFeePerGas, gasLimit, to, value, data, accessList, signatureYParity, signatureR, signatureS])
-        ```
-    
-    -   a valid transaction is thus:
-
-        ```
-        0x02 || RLP([chainId, nonce, maxPriorityFeePerGas, maxFeePerGas, gasLimit, to, value, data, accessList, signatureYParity, signatureR, signatureS])
-        ```
-
-    -   Defined in 
-        [EIP-1559: Fee market change for ETH 1.0 chain](https://eips.ethereum.org/EIPS/eip-1559).
-    -   Supported since Ethereum London hard fork on 
-        [Aug, 5 2021](https://ethereum.org/en/history/#london).
-
-## Transaction types supported on Celo
-
-Celo currently supports the following transaction types:
-
-1.  Celo legacy transaction
-    -   transaction type: `none` (not EIP-2718 compliant)
-    -   a valid transaction is thus:
-
-        ```
-        RLP([nonce, gasprice, gaslimit, feecurrency, gatewayfeerecipient, gatewayfee, recipient, amount, data, v, r, s])
-        ```
-    
-    -   Defined in Celo blockchain client release 
-        [v1.0.0](https://github.com/celo-org/celo-blockchain/tree/celo-v1.0.0).
-    -   Supported since Celo Mainnet launch on 
-        [Apr, 22 2020](https://dune.com/queries/3106924/5185945).
-    -   TLDR: this is the Ethereum legacy transaction type with three additional Celo-specific 
-        parameters (`feecurrency`, `gatewayfeerecipient`, and `gatewayfee`).
-
-1.  Ethereum legacy transaction 
-    -   transaction type: `0x00` (not EIP-2718 compliant)
-    -   a valid transaction is thus:
-
-        ```
-        RLP([nonce, gasprice, gaslimit, recipient, amount, data, v, r, s])
-        ```
-    
-    -   Defined in 
-        [CIP-35: Support for Ethereum-compatible transactions](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0035.md)
-    -   Supported since [CHECK: Celo Espresso hardfork on date ?]
-    -   TLDR: this is the Ethereum legacy transaction type without any Celo-specific parameters.
-
-1.  Celo dynamic fee transaction
-    -   transaction type: `0x7c` (124)
-    -   transaction payload:
-
-        ```
-        RLP([chain_id, nonce, max_priority_fee_per_gas, max_fee_per_gas, gas_limit, feecurrency, gatewayfeerecipient, gatewayfee, destination, amount, data, access_list, v, r, s])
-        ```
-    
-    -   a valid transaction is thus: [CHECK: <-- Confirm this is correct]
-
-        ```
-        0x7c || RLP([chain_id, nonce, max_priority_fee_per_gas, max_fee_per_gas, gas_limit, feecurrency, gatewayfeerecipient, gatewayfee, destination, amount, data, access_list, v, r, s])
-        ```
-    
-    -   Defined in 
-        [CIP-42: Modification to EIP-1559](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0042.md)
-    -   Supported since 
-        [Celo Espresso hard fork](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0041.md)
-        on [Mar, 8 2022](https://blog.celo.org/brewing-the-espresso-hardfork-92a696af1a17).
-    -   TLDR: this is the Ethereum dynamic fee transaction type (EIP-1559) with three additional 
-        Celo-specific parameters (`feecurrency`, `gatewayfeerecipient`, and `gatewayfee`)
-
-1.  Ethereum dynamic fee transaction
-    -   transaction type: `0x02` (2)
-    -   transaction payload:
-
-        ```
-        RLP([chainId, nonce, maxPriorityFeePerGas, maxFeePerGas, gasLimit, to, value, data, accessList, v, r, s])
-        ```
-    
-    -   a valid transaction is thus:
-
-        ```
-        0x02 || RLP([chainId, nonce, maxPriorityFeePerGas, maxFeePerGas, gasLimit, to, value, data, accessList, signatureYParity, signatureR, signatureS])
-        ```
-    
-    -   Defined in 
-        [CIP-42: Modification to EIP-1559](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0042.md)
-    -   Supported since 
-        [Celo Espresso hard fork](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0041.md)
-        on [Mar, 8 2022](https://blog.celo.org/brewing-the-espresso-hardfork-92a696af1a17).
-    -   TLDR: this is the Ethereum dynamic fee transaction type (EIP-1559) without any 
-        Celo-specific parameters.
-
-1.  Celo dynamic fee transaction v2
-    -   transaction type: `0x7b` (123)
-    -   transaction payload:
-
-        ```
-        RLP([chainId, nonce, maxPriorityFeePerGas, maxFeePerGas, gasLimit, to, value, data, accessList, feeCurrency, v, r, s])
-        ```
-    
-    -   a valid transaction is thus:
-
-        ```
-        0x7b || RLP([chainId, nonce, maxPriorityFeePerGas, maxFeePerGas, gasLimit, to, value, data, accessList, feeCurrency, v, r, s])
-        ```
-    
-    -   Defined in 
-        [CIP-64: New Transaction Type: Celo Dynamic Fee v2](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0064.md)
-    -   Supported since 
-        [Celo Gingerbread hard fork](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md) 
-        on 
-        [Sep, 26 2023](https://forum.celo.org/t/mainnet-alfajores-gingerbread-hard-fork-release-sep-26-17-00-utc/6499)
-    -   TLDR: this is the Ethereum dynamic fee transaction type (EIP-1559) with one additional Celo-specific parameters (`feecurrency`) instead of three (`feecurrency`, `gatewayfeerecipient`, and `gatewayfee`)
 
 ## Demo usage
 
