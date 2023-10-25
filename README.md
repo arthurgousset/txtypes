@@ -35,12 +35,12 @@ The stages of support are:
     because it might be deprecated in the future.
 -   **Deprecated** 🔴: the transaction type is not supported and not recommended for use.
 
-### Client library overview
+### Client library support
 
 Legend:
 
--   <img width="9" src="assets/images/Ethereum.png"> = the recommended Ethereum transaction type (`2`)
--   <img width="9" src="assets/images/Celo.png"> = the recommended Celo transaction type (`123`)
+-   <img width="12" src="assets/images/Ethereum.png"> = support for the recommended Ethereum transaction type (`2`)
+-   <img width="12" src="assets/images/Celo.png"> = support for the recommended Celo transaction type (`123`)
 
 | Client library | Language | <img width="20" src="assets/images/Ethereum.png"> | since | <img width="20" src="assets/images/Celo.png"> | since | Comment |
 |---|:---:|:---:|:---:|:---|---|---|
