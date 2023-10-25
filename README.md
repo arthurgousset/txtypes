@@ -12,7 +12,7 @@ transactions.
 Celo has support for all Ethereum transaction types (i.e. "100% Ethereum compatibility") 
 and a single Celo transaction type. 
 
-#### Actively supported on Celo
+### Actively supported on Celo
 
 | Chain | Transaction type  | # | Specification | Recommended | Support | Comment |
 |---|---|---|---|---|---|---|
@@ -21,7 +21,7 @@ and a single Celo transaction type.
 | <img width="20" src="assets/images/Ethereum.png"> | Ethereum access list transaction | `1` | [EIP-2930](https://eips.ethereum.org/EIPS/eip-2930) ([CIP-35](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0035.md)) | ❌ | Active 🟢 | Does not support dynamically changing _base fee_ per gas  | 
 | <img width="20" src="assets/images/Ethereum.png"> | Ethereum legacy transaction | `0` | [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) ([CIP-35](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0035.md)) | ❌ | Active 🟢 | Does not support dynamically changing _base fee_ per gas |
 
-#### At risk of deprecation on Celo
+### At risk of deprecation on Celo
 
 | Chain | Transaction type  | # | Specification | Recommended | Support | Comment |
 |---|---|---|---|---|---|---|
@@ -35,7 +35,7 @@ The stages of support are:
     because it might be deprecated in the future.
 -   **Deprecated** 🔴: the transaction type is not supported and not recommended for use.
 
-#### Client library support
+### Client library overview
 
 Legend:
 
