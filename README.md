@@ -9,15 +9,49 @@ transactions.
 
 ## Summary
 
-| Chain | Transaction type  | # | Recommended & Supported | Viem (TS) | Ethers (TS) | ContractKit (TS) | Web3js (TS) | Web3j (Java) | rust-ethers (Rust) | Brownie (Python) |
-|---|---|---|---|---|---|---|---|---|---|---|
-| <img width="20" src="assets/images/Celo.png"> | Celo dynamic fee transaction v2 ([CIP-64](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0064.md)) | `123` | 👍 / active | ❌ | ❌ | ? | ❌ | ❌ | ? | ? |
-| <img width="20" src="assets/images/Ethereum.png"> | Ethereum dynamic fee transaction ([CIP-42](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0042.md)) | `2` | 👍 / active | ✅ | ✅ | ✅ (>[v5.0.0](https://github.com/celo-org/celo-monorepo/releases/tag/v5.0)) |  ✅ | ✅ | ? | ? |
-| <img width="20" src="assets/images/Ethereum.png"> | Ethereum legacy transaction ([CIP-35](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0035.md)) | `0` | 👎 / active | ✅ | ✅ | ✅ | ✅ | ✅ | ? | ✅ |
-| <img width="20" src="assets/images/Celo.png"> | Celo dynamic fee transaction ([CIP-42](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0042.md)) | `124` | 👎 / [deprecation warning](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md#deprecation-warning) ⚠️ | ✅ (>[v1.2.8](https://github.com/wagmi-dev/viem/blob/main/src/CHANGELOG.md#128)) | ❌ | ✅ (>[v5.0.0](https://github.com/celo-org/celo-monorepo/releases/tag/v5.0)) | ❌ | ❌ | ? | ? |
-| <img width="20" src="assets/images/Celo.png"> | Celo legacy transaction | `0` | 👎 / [deprecation warning](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md#deprecation-warning) ⚠️ | ✅ | ❌ | ✅ | ❌ | ❌ | ? | ? |
+Celo has support for all Ethereum transaction types (i.e. "100% Ethereum compatibility") 
+and a single Celo transaction type. 
 
-Learn more about the transaction types below.
+#### Actively supported on Celo
+
+| Chain | Transaction type  | # | Specification | Recommended | Support | Comment |
+|---|---|---|---|---|---|---|
+| <img width="20" src="assets/images/Celo.png"> | Celo dynamic fee transaction v2 | `123` | [CIP-64](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0064.md) | ✅ | Active 🟢 | Supports paying gas in custom fee currencies |
+| <img width="20" src="assets/images/Ethereum.png"> | Ethereum dynamic fee transaction | `2` | [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) ([CIP-42](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0042.md)) | ✅ | Active 🟢 | Typical Ethereum transaction |
+| <img width="20" src="assets/images/Ethereum.png"> | Ethereum access list transaction | `1` | [EIP-2930](https://eips.ethereum.org/EIPS/eip-2930) ([CIP-35](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0035.md)) | ❌ | Active 🟢 | Does not support dynamically changing _base fee_ per gas  | 
+| <img width="20" src="assets/images/Ethereum.png"> | Ethereum legacy transaction | `0` | [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) ([CIP-35](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0035.md)) | ❌ | Active 🟢 | Does not support dynamically changing _base fee_ per gas |
+
+#### At risk of deprecation on Celo
+
+| Chain | Transaction type  | # | Specification | Recommended | Support | Comment |
+|---|---|---|---|---|---|---|
+| <img width="20" src="assets/images/Celo.png"> | Celo dynamic fee transaction | `124` | [CIP-42](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0042.md) | ❌ | Security 🟠 | Deprecation warning published in [Gingerbread hard fork](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md#deprecation-warning) |
+| <img width="20" src="assets/images/Celo.png"> | Celo legacy transaction | `0` | Celo Mainnet launch ([Blockchain client v1.0.0](https://github.com/celo-org/celo-blockchain/tree/celo-v1.0.0)) | ❌ | Security 🟠 | Deprecation warning published in [Gingerbread hard fork](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md#deprecation-warning) |
+
+The stages of support are:
+
+-   **Active support** 🟢: the transaction type is supported and recommended for use.
+-   **Security support** 🟠: the transaction type is supported but not recommended for use
+    because it might be deprecated in the future.
+-   **Deprecated** 🔴: the transaction type is not supported and not recommended for use.
+
+#### Client library support
+
+Legend:
+
+-   <img width="9" src="assets/images/Ethereum.png"> = the recommended Ethereum transaction type (`2`)
+-   <img width="9" src="assets/images/Celo.png"> = the recommended Celo transaction type (`123`)
+
+| Client library | Language | <img width="20" src="assets/images/Ethereum.png"> | since | <img width="20" src="assets/images/Celo.png"> | since | Comment |
+|---|:---:|:---:|:---:|:---|---|---|
+| Viem | TS/JS | ✅ | |  🟠 | | In progress | 
+| Ethers | TS/JS | ✅ | |  ❌ | | Support via fork  | 
+| celo-ethers-wrapper | TS/JS | ✅ | | ✅ | | |
+| web3js | TS/JS | ✅ | |  ❌ | | Support via fork |
+| ContractKit | TS/JS | ✅ |  | ✅ | >[v5.0.0](https://github.com/celo-org/celo-monorepo/releases/tag/v5.0) | |
+| Web3j | Java | ✅ | |  ❌ |  |
+| rust-ethers | Rust |  ✅ | | ❌ | | |
+| Brownie | Python |  ✅ | | ❌ | | |
 
 ## Background
 
