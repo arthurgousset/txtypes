@@ -3,7 +3,7 @@
 This repo contains an explainer on transaction types supported on Celo and a demo to make specific 
 transactions.
 
-> **Warning**
+> **IMPORTANT**
 > This repo is for educational purposes only. The information provided here may be inaccurate. 
 > Please don’t rely on it exclusively to implement low-level client libraries.
 
@@ -132,7 +132,7 @@ its transaction type and a relevant decoder.
 
 ### <img width="12" src="assets/images/Ethereum.png"> Legacy transaction (`0`)
 
-> **Info**
+> **NOTE**
 > This transaction type is 100% compatible with Ethereum and has no Celo-specific parameters.
 
 Although legacy transactions are never formally prepended with the `0x00` transaction type, 
@@ -152,7 +152,7 @@ they are commonly referred to as "type 0" transactions.
 
 ### <img width="12" src="assets/images/Ethereum.png"> Access list transaction (`1`)
 
-> **Info**
+> **NOTE**
 > This transaction type is 100% compatible with Ethereum and has no Celo-specific parameters.
 
 -   This transaction is defined as follows:
@@ -170,7 +170,7 @@ they are commonly referred to as "type 0" transactions.
 
 ### <img width="12" src="assets/images/Ethereum.png"> Dynamic fee transaction (`2`)
 
-> **Info**
+> **NOTE**
 > This transaction type is 100% compatible with Ethereum and has no Celo-specific parameters.
 
 -   This transaction is defined as follows:
@@ -190,7 +190,7 @@ they are commonly referred to as "type 0" transactions.
 
 ### <img width="14" src="assets/images/Celo.png"> Legacy transaction (`0`)
 
-> **Info**
+> **NOTE**
 > This transaction is not compatible with Ethereum and has three Celo-specific 
 > parameters: `feecurrency`, `gatewayfeerecipient`, and `gatewayfee`.
 
@@ -206,7 +206,7 @@ they are commonly referred to as "type 0" transactions.
 
 ### <img width="14" src="assets/images/Celo.png"> Dynamic fee transaction (`124`)
 
-> **Info**
+> **NOTE**
 > This transaction is not compatible with Ethereum and has three Celo-specific 
 > parameters: `feecurrency`, `gatewayfeerecipient`, and `gatewayfee`.
 
@@ -223,7 +223,7 @@ they are commonly referred to as "type 0" transactions.
 
 ### <img width="14" src="assets/images/Celo.png"> Dynamic fee transaction v2 (`123`)
 
-> **Info**
+> **NOTE**
 > This transaction is not compatible with Ethereum and has one Celo-specific 
 > parameter: `feecurrency`.
 
