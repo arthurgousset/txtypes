@@ -274,157 +274,42 @@ yarn demo
 npm demo
 ```
 
-### [Legacy transaction demo](https://alfajores.celoscan.io/tx/0x4d208ed5c8949255b1dd7fb865dc27ffbdcc35bb7239174272ebfd2b37ec3d5b)
+### Expected output
 
 ```sh
-~/Documents/txtypes main $ yarn demo
+~/Documents/txtypes main $ yarn run demo
 yarn run v1.22.19
 $ ts-node demo.ts
 Initiating legacy transaction...
-Legacy transaction: 0x4d208ed5c8949255b1dd7fb865dc27ffbdcc35bb7239174272ebfd2b37ec3d5b 
-
-Legacy transaction receipt {
-  blockHash: '0x8c17c2ca9d4e2134c6ee14c55a516e9b59aa341647c6e8719a455f1cd4ca4123',
-  blockNumber: 20542443n,
-  contractAddress: null,
-  cumulativeGasUsed: 21000n,
-  effectiveGasPrice: 20000000000n,
-  from: '0x303c22e6ef01cba9d03259248863836cb91336d5',
-  gasUsed: 21000n,
-  logs: [],
-  logsBloom: '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
-  status: 'success',
-  to: '0x70997970c51812dc3a010c7d01b50e0d17dc79c8',
-  transactionHash: '0x4d208ed5c8949255b1dd7fb865dc27ffbdcc35bb7239174272ebfd2b37ec3d5b',
-  transactionIndex: 0,
+Transaction details: {
   type: 'legacy',
-  feeCurrency: undefined,
-  gatewayFee: null,
-  gatewayFeeRecipient: undefined
+  status: 'success',
+  transactionHash: '0x6ea4ee86797b7850b97fd418c17a8282dcf9370ac1eb2f6e1897d3697b0026ba',
+  from: '0x303c22e6ef01cba9d03259248863836cb91336d5',
+  to: '0x70997970c51812dc3a010c7d01b50e0d17dc79c8',
+  feeCurrency: undefined
 } 
 
-See in explorer: https://alfajores.celoscan.io/tx/0x4d208ed5c8949255b1dd7fb865dc27ffbdcc35bb7239174272ebfd2b37ec3d5b 
-
-✨  Done in 11.10s.
-```
-
-<img width="650" src="assets/images/LegacyTransactionScreenshot.png">
-
-### [Dynamic fee transaction demo](https://alfajores.celoscan.io/tx/0x46e31fd929e14e5cc3eeefc565a3a87e3c973f737f075c410ebe38f83078ee75)
-
-```sh
-~/Documents/txtypes main $ yarn demo
-yarn run v1.22.19
-$ ts-node demo.ts
 Initiating dynamic fee (EIP-1559) transaction...
-Dynamic fee (EIP-1559) transaction: 0x46e31fd929e14e5cc3eeefc565a3a87e3c973f737f075c410ebe38f83078ee75 
-
-Dynamic fee (EIP-1559) transaction receipt {
-  blockHash: '0x4c395840bf21e858a2dc4798305f569598d79b0b07f3e7eda5e92ae301037645',
-  blockNumber: 20542481n,
-  contractAddress: null,
-  cumulativeGasUsed: 21000n,
-  effectiveGasPrice: 10000000000n,
-  from: '0x303c22e6ef01cba9d03259248863836cb91336d5',
-  gasUsed: 21000n,
-  logs: [],
-  logsBloom: '0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000',
-  status: 'success',
-  to: '0x70997970c51812dc3a010c7d01b50e0d17dc79c8',
-  transactionHash: '0x46e31fd929e14e5cc3eeefc565a3a87e3c973f737f075c410ebe38f83078ee75',
-  transactionIndex: 0,
+Transaction details: {
   type: 'eip1559',
-  feeCurrency: undefined,
-  gatewayFee: null,
-  gatewayFeeRecipient: undefined
-} 
-
-See in explorer: https://alfajores.celoscan.io/tx/0x46e31fd929e14e5cc3eeefc565a3a87e3c973f737f075c410ebe38f83078ee75 
-
-✨  Done in 11.16s.
-```
-
-<img width="650" src="assets/images/DynamicFeeTransactionScreenshot.png">
-
-### [Custom fee currency demo](https://explorer.celo.org/alfajores/tx/0xa708ae8884219523f0414a84204b2040226ae34766f325d69241f5d76fcc6e1b)
-
-```sh
-~/Documents/txtypes main $ yarn demo
-yarn run v1.22.19
-$ ts-node demo.ts
-Initiating custom fee currency transaction...
-Custom fee currency transaction: 0xa708ae8884219523f0414a84204b2040226ae34766f325d69241f5d76fcc6e1b 
-
-Custom fee currency transaction receipt {
-  blockHash: '0xe6f7c202a946ea06d2ebc2032cb82a58822f1a6110afdb9cf3818d827b3fc173',
-  blockNumber: 20542764n,
-  contractAddress: null,
-  cumulativeGasUsed: 71000n,
-  effectiveGasPrice: 10000000000n,
-  from: '0x303c22e6ef01cba9d03259248863836cb91336d5',
-  gasUsed: 71000n,
-  logs: [
-    {
-      address: '0x874069fa1eb16d44d622f2e0ca25eea172369bc1',
-      topics: [Array],
-      data: '0x000000000000000000000000000000000000000000000000000091ca56b12be8',
-      blockNumber: 20542764n,
-      transactionHash: '0xa708ae8884219523f0414a84204b2040226ae34766f325d69241f5d76fcc6e1b',
-      transactionIndex: 0,
-      blockHash: '0xe6f7c202a946ea06d2ebc2032cb82a58822f1a6110afdb9cf3818d827b3fc173',
-      logIndex: 0,
-      removed: false
-    },
-    {
-      address: '0x874069fa1eb16d44d622f2e0ca25eea172369bc1',
-      topics: [Array],
-      data: '0x0000000000000000000000000000000000000000000000000001f3f36b193418',
-      blockNumber: 20542764n,
-      transactionHash: '0xa708ae8884219523f0414a84204b2040226ae34766f325d69241f5d76fcc6e1b',
-      transactionIndex: 0,
-      blockHash: '0xe6f7c202a946ea06d2ebc2032cb82a58822f1a6110afdb9cf3818d827b3fc173',
-      logIndex: 1,
-      removed: false
-    }
-  ],
-  logsBloom: '0x00000000080000000000000000000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000000100000000000000000000000000008000000000000000000000000000008000000000000000000000000000000000000000000000000800000000000000011000000000000000800000000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000202000000000000008008000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000',
   status: 'success',
+  transactionHash: '0xa0f66c0c52be0480735b42818c7e08b59c487f5c9729ae969f900055703ad8f2',
+  from: '0x303c22e6ef01cba9d03259248863836cb91336d5',
   to: '0x70997970c51812dc3a010c7d01b50e0d17dc79c8',
-  transactionHash: '0xa708ae8884219523f0414a84204b2040226ae34766f325d69241f5d76fcc6e1b',
-  transactionIndex: 0,
-  type: '0x7c',
-  feeCurrency: undefined,
-  gatewayFee: null,
-  gatewayFeeRecipient: undefined
+  feeCurrency: undefined
 } 
 
-See in explorer: https://explorer.celo.org/alfajores/tx/0xa708ae8884219523f0414a84204b2040226ae34766f325d69241f5d76fcc6e1b 
+Initiating custom fee currency transaction...
+Transaction details: {
+  type: '0x7c',
+  status: 'success',
+  transactionHash: '0x9935c26499205b028a2518cfa5a32b7ebf68533deec414c8ded9f91ae5aa5dd8',
+  from: '0x303c22e6ef01cba9d03259248863836cb91336d5',
+  to: '0x70997970c51812dc3a010c7d01b50e0d17dc79c8',
+  feeCurrency: undefined
+} 
 
-✨  Done in 11.19s.
+✨  Done in 30.86s.
 ```
 
-<img width="650" src="assets/images/CustomFeeCurrencyTransactionScreenshot.png">
-
-## Todos
-
--   [x] CHECK: That any valid typed or untyped Ethereum transaction is valid on Celo ?
-    All transactions (legacy and newly typed Ethereum transactions) are valid on Celo
-
--   [x] CHECK: Does Celo support 0x00 typed Celo-specific transactions?
-    Yes, there is no specific 0x00 typed transactions, legacy transactions are simply accepted and implied to be of type 0 (althought they are not prefixed with `0x00 || ...`)
-
--   [x] CHECK: Does Celo support access list with Celo-specific parameters
-    No, Celo only supports accessList via EIP-1559 Ethereum transactions (type 0x02) and Celo dynamic fee v2 transactions (type 0x7b), there is no Celo-specific access list transaction type (with the legacy format, i.e. no max gas fee and Celo-specific parameters)
-
--   [x] CHECK: Does Celo support access list with legacy gasLimit field instead of EIP-1559
-    Yes, Celo supports access list in Ethereum access list transcactions (i.e. with legacy gasLimit field instead of EIP-1559)
-
--   Demo all recommended and supported transaction types
-    -   [ ] Celo CIP-64 transaction (the only Celo-specific transaction type recommended and supported long-term)
-    -   [ ] Ethereum EIP-1559 transaction
-    -   [ ] Ethereum access list transaction
-    -   [ ] Ethereum legacy transaction
-
--   [ ] Specify that all Ethereum transactions are valid on Celo
-
--   [ ] Consider using "Active Support" and	"Security Support" terminology for the deprecation warnings (like here [endoflife.date/nodejs](https://endoflife.date/nodejs))
