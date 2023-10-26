@@ -10,12 +10,10 @@ import { privateKeyToAccount } from "viem/accounts";
 import { celoAlfajores } from "viem/chains";
 import "dotenv/config"; // use to read private key from environment variable
 
-// Constants
-const EXPLORER_URL = 'https://alfajores.celoscan.io/tx/';
 const PRIVATE_KEY = process.env.PRIVATE_KEY
 
 /**
- * Boilerplate to create a client
+ * Boilerplate to create a viem client
  */
 const publicClient = createPublicClient({
     chain: celoAlfajores,
@@ -40,17 +38,12 @@ async function demoLegacyTransactionType() {
         value: parseEther("0.01"), // 0.01 CELO
         gasPrice: parseGwei("20"), // Special field for legacy transaction type
     });
-    console.log(`Legacy transaction:`, transactionHash, "\n");
 
     const transactionReceipt = await publicClient.waitForTransactionReceipt({
         hash: await transactionHash,
     });
-    console.log(`Legacy transaction receipt`, transactionReceipt, "\n");
-    console.log(
-        `See in explorer:`,
-        `${EXPLORER_URL}${transactionReceipt.transactionHash}`,
-        "\n"
-    );
+    
+    printFormattedTransactionReceipt(transactionReceipt);
 }
 
 /**
@@ -67,27 +60,18 @@ async function demoDynamicFeeTransactionType() {
         maxFeePerGas: parseGwei("10"), // Special field for dynamic fee transaction type (EIP-1559)
         maxPriorityFeePerGas: parseGwei("10"), // Special field for dynamic fee transaction type (EIP-1559)
     });
-    console.log(`Dynamic fee (EIP-1559) transaction:`, transactionHash, "\n");
 
     const transactionReceipt = await publicClient.waitForTransactionReceipt({
         hash: await transactionHash,
     });
-    console.log(
-        `Dynamic fee (EIP-1559) transaction receipt`,
-        transactionReceipt,
-        "\n"
-    );
-    console.log(
-        `See in explorer:`,
-        `${EXPLORER_URL}${transactionReceipt.transactionHash}`,
-        "\n"
-    );
+    
+    printFormattedTransactionReceipt(transactionReceipt);
 }
 
 /**
  * Transaction type: 124 (0x7c)
- * Name: "Custom fee currency"
- * Description: Celo fee currency transaction
+ * Name: "Dynamic fee"
+ * Description: Celo dynamic fee transaction (with custom fee currency)
  */
 async function demoFeeCurrencyTransactionType() {
     console.log(`Initiating custom fee currency transaction...`);
@@ -99,28 +83,53 @@ async function demoFeeCurrencyTransactionType() {
         maxFeePerGas: parseGwei("10"), // Special field for dynamic fee transaction type (EIP-1559)
         maxPriorityFeePerGas: parseGwei("10"), // Special field for dynamic fee transaction type (EIP-1559)
     });
-    console.log(`Custom fee currency transaction:`, transactionHash, "\n");
 
     const transactionReceipt = await publicClient.waitForTransactionReceipt({
         hash: await transactionHash,
     });
-    console.log(
-        `Custom fee currency transaction receipt`,
-        transactionReceipt,
-        "\n"
-    );
-    console.log(
-        `See in explorer:`,
-        `${EXPLORER_URL}${transactionReceipt.transactionHash}`,
-        "\n"
-    );
+
+    printFormattedTransactionReceipt(transactionReceipt);
+}
+
+function printFormattedTransactionReceipt(transactionReceipt: any) {
+
+    const {
+        blockHash,
+        blockNumber,
+        contractAddress,
+        cumulativeGasUsed,
+        effectiveGasPrice,
+        from,
+        gasUsed,
+        logs,
+        logsBloom,
+        status,
+        to,
+        transactionHash,
+        transactionIndex,
+        type,
+        feeCurrency,
+        gatewayFee,
+        gatewayFeeRecipient
+      } = transactionReceipt;
+      
+      const filteredTransactionReceipt = {
+        type,
+        status,
+        transactionHash,
+        from,
+        to,
+        feeCurrency
+      };
+
+    console.log(`Transaction details:`, filteredTransactionReceipt, `\n`);
 }
 
 // Wrap both demos in an async function to await their completion
 async function runDemosSequentially() {
     // Run each demo and await its completion
-    // await demoLegacyTransactionType();
-    // await demoDynamicFeeTransactionType();
+    await demoLegacyTransactionType();
+    await demoDynamicFeeTransactionType();
     await demoFeeCurrencyTransactionType();
 }
 
