@@ -108,7 +108,7 @@ prepended with a **transaction type**, where:
     the type of the transaction, and
 
 -   a **transaction payload**, is arbitrary byte data that encodes raw transaction parameters 
-    is compliance with the specified transaction type.
+    in compliance with the specified transaction type.
 
 To distinguish between legacy transactions and typed transactions at the client level, 
 the EIP designers observed that the **first byte** of a legacy transaction would never be in the range 
@@ -117,7 +117,7 @@ the EIP designers observed that the **first byte** of a legacy transaction would
 With that observation, transactions can be decoded with the following heuristic:
 
 -   read the first byte of a transaction
--   if it's bigger than `0x7f` (`127`), then it's a **legacy transaction**. To decode it you, 
+-   if it's bigger than `0x7f` (`127`), then it's a **legacy transaction**. To decode it, you 
     must read _all_ bytes (including the first byte just read) and interpret them as a 
     legacy transaction.
 -   else, if it's smaller or equal to `0x7f` (`127`), then it's a **typed transaction**. To decode
