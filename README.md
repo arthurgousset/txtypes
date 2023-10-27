@@ -144,11 +144,13 @@ they are commonly referred to as "type 0" transactions.
     RLP([nonce, gasprice, gaslimit, recipient, amount, data, v, r, s])
     ```
 
--   It was introduced on Ethereum during Mainnet launch on [date CHECK] as specified in the
-    [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf).
+-   It was introduced on Ethereum during Mainnet launch on [Jul 30, 2015](https://en.wikipedia.org/wiki/Ethereum) 
+    as specified in the [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf).
 
--   It was introduced on Celo [during CHECK] on [date CHECK] as specified in 
-    [CIP-35: Support for Ethereum-compatible transactions](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0035.md).
+-   It was introduced on Celo during the 
+    [Celo Donut hard fork](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0027.md)
+    on [May 19, 2021](https://blog.celo.org/donut-hardfork-is-live-on-celo-585e2e294dcb) 
+    as specified in [CIP-35: Support for Ethereum-compatible transactions](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0035.md).
 
 ### <img width="12" src="assets/images/Ethereum.png"> Access list transaction (`1`)
 
@@ -165,8 +167,10 @@ they are commonly referred to as "type 0" transactions.
     [Apr, 15 2021](https://ethereum.org/en/history/#berlin) as specified in 
     [EIP-2930: Optional access lists](https://eips.ethereum.org/EIPS/eip-2930).
 
--   It was introduced on Celo [during CHECK] on [date CHECK] as specified in 
-    [CIP-35: Support for Ethereum-compatible transactions](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0035.md).
+-   It was introduced on Celo during the 
+    [Celo Donut hard fork](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0027.md)
+    on [May 19, 2021](https://blog.celo.org/donut-hardfork-is-live-on-celo-585e2e294dcb) 
+    as specified in [CIP-35: Support for Ethereum-compatible transactions](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0035.md).
 
 ### <img width="12" src="assets/images/Ethereum.png"> Dynamic fee transaction (`2`)
 
@@ -185,7 +189,7 @@ they are commonly referred to as "type 0" transactions.
 
 -   It was introduced on Celo during the
     [Celo Espresso hard fork](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0041.md)
-    on [Mar, 8 2022](https://blog.celo.org/brewing-the-espresso-hardfork-92a696af1a17) as specified
+    on [Mar 8, 2022](https://blog.celo.org/brewing-the-espresso-hardfork-92a696af1a17) as specified
     in [CIP-42: Modification to EIP-1559](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0042.md)
 
 ### <img width="14" src="assets/images/Celo.png"> Legacy transaction (`0`)
@@ -194,6 +198,10 @@ they are commonly referred to as "type 0" transactions.
 > This transaction is not compatible with Ethereum and has three Celo-specific 
 > parameters: `feecurrency`, `gatewayfeerecipient`, and `gatewayfee`.
 
+> **Warning**
+> This transaction type is at risk of deprecation. A deprecation warning was published in the 
+> [Gingerbread hard fork](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md#deprecation-warning)
+
 -   This transaction is defined as follows:
 
     ```
@@ -201,7 +209,7 @@ they are commonly referred to as "type 0" transactions.
     ```
     
 -   It was introduced on Celo during Mainnet launch on 
-    [Apr, 22 2020](https://dune.com/queries/3106924/5185945) as specified in 
+    [Apr 22, 2020](https://dune.com/queries/3106924/5185945) as specified in 
     [Blockchain client v1.0.0](https://github.com/celo-org/celo-blockchain/tree/celo-v1.0.0).
 
 ### <img width="14" src="assets/images/Celo.png"> Dynamic fee transaction (`124`)
@@ -209,6 +217,10 @@ they are commonly referred to as "type 0" transactions.
 > **NOTE**
 > This transaction is not compatible with Ethereum and has three Celo-specific 
 > parameters: `feecurrency`, `gatewayfeerecipient`, and `gatewayfee`.
+
+> **Warning**
+> This transaction type is at risk of deprecation. A deprecation warning was published in the 
+> [Gingerbread hard fork](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md#deprecation-warning)
 
 -   This transaction is defined as follows:
 
@@ -218,7 +230,7 @@ they are commonly referred to as "type 0" transactions.
     
 -   It was introduced on Celo during the 
     [Celo Espresso hard fork](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0041.md)
-    on [Mar, 8 2022](https://blog.celo.org/brewing-the-espresso-hardfork-92a696af1a17) as specified 
+    on [Mar 8, 2022](https://blog.celo.org/brewing-the-espresso-hardfork-92a696af1a17) as specified 
     in [CIP-42: Modification to EIP-1559](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0042.md).
 
 ### <img width="14" src="assets/images/Celo.png"> Dynamic fee transaction v2 (`123`)
@@ -235,7 +247,7 @@ they are commonly referred to as "type 0" transactions.
 
 -   It was introduced on Celo during the 
     [Celo Gingerbread hard fork](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md) 
-    on [Sep, 26 2023](https://forum.celo.org/t/mainnet-alfajores-gingerbread-hard-fork-release-sep-26-17-00-utc/6499)
+    on [Sep 26, 2023](https://forum.celo.org/t/mainnet-alfajores-gingerbread-hard-fork-release-sep-26-17-00-utc/6499)
     as specified in 
     [CIP-64: New Transaction Type: Celo Dynamic Fee v2](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0064.md)
 
