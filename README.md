@@ -194,13 +194,15 @@ they are commonly referred to as "type 0" transactions.
 
 ### <img width="14" src="assets/images/Celo.png"> Legacy transaction (`0`)
 
+> **Warning**
+> This transaction type is at risk of deprecation. A deprecation warning was published in the 
+> [Gingerbread hard fork](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md#deprecation-warning)
+> on [Sep 26, 2023](https://forum.celo.org/t/mainnet-alfajores-gingerbread-hard-fork-release-sep-26-17-00-utc/6499).
+
 > **NOTE**
 > This transaction is not compatible with Ethereum and has three Celo-specific 
 > parameters: `feecurrency`, `gatewayfeerecipient`, and `gatewayfee`.
 
-> **Warning**
-> This transaction type is at risk of deprecation. A deprecation warning was published in the 
-> [Gingerbread hard fork](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md#deprecation-warning)
 
 -   This transaction is defined as follows:
 
@@ -214,13 +216,14 @@ they are commonly referred to as "type 0" transactions.
 
 ### <img width="14" src="assets/images/Celo.png"> Dynamic fee transaction (`124`)
 
-> **NOTE**
-> This transaction is not compatible with Ethereum and has three Celo-specific 
-> parameters: `feecurrency`, `gatewayfeerecipient`, and `gatewayfee`.
-
 > **Warning**
 > This transaction type is at risk of deprecation. A deprecation warning was published in the 
 > [Gingerbread hard fork](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md#deprecation-warning)
+> on [Sep 26, 2023](https://forum.celo.org/t/mainnet-alfajores-gingerbread-hard-fork-release-sep-26-17-00-utc/6499).
+
+> **NOTE**
+> This transaction is not compatible with Ethereum and has three Celo-specific 
+> parameters: `feecurrency`, `gatewayfeerecipient`, and `gatewayfee`.
 
 -   This transaction is defined as follows:
 
