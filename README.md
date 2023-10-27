@@ -48,7 +48,7 @@ Legend:
 |---|:---:|:---:|:---:|:---|---|---|
 | `viem` | TS/JS | ✅ | | ❌ | | [In progress](https://github.com/wagmi-dev/viem/pull/1379) | 
 | `ethers` | TS/JS | ✅ | |  ❌ | | Support via fork in <br> `celo-ethers-wrapper` | 
-| `celo-ethers-wrapper` | TS/JS | ✅ | | ✅ | | --- |
+| `celo-ethers-wrapper` | TS/JS | ✅ | | ✅ | >[v2.0.0](https://github.com/celo-tools/celo-ethers-wrapper/releases/tag/2.0.0) | --- |
 | `web3js` | TS/JS | ✅ | |  ❌ | | Support via fork in  <br> `contractkit` |
 | `contractkit` | TS/JS | ✅ |  | ✅ | >[v5.0.0](https://github.com/celo-org/celo-monorepo/releases/tag/v5.0) | --- |
 | `Web3j` | Java | ✅ | |  ❌ |  | --- |
