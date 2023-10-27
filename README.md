@@ -41,10 +41,12 @@ Legend:
 
 -   <img width="12" src="assets/images/Ethereum.png"> = support for the recommended Ethereum transaction type (`2`)
 -   <img width="12" src="assets/images/Celo.png"> = support for the recommended Celo transaction type (`123`)
+-   ✅ = available
+-   ❌ = not available
 
 | Client library | Language | <img width="20" src="assets/images/Ethereum.png"> | since | <img width="20" src="assets/images/Celo.png"> | since | Comment |
 |---|:---:|:---:|:---:|:---|---|---|
-| `viem` | TS/JS | ✅ | | 🟠 | | [In progress](https://github.com/wagmi-dev/viem/pull/1379) | 
+| `viem` | TS/JS | ✅ | | ❌ | | [In progress](https://github.com/wagmi-dev/viem/pull/1379) | 
 | `ethers` | TS/JS | ✅ | |  ❌ | | Support via fork in <br> `celo-ethers-wrapper` | 
 | `celo-ethers-wrapper` | TS/JS | ✅ | | ✅ | | --- |
 | `web3js` | TS/JS | ✅ | |  ❌ | | Support via fork in  <br> `contractkit` |
