@@ -21,7 +21,7 @@ and a single Celo transaction type.
 | <img width="20" src="assets/images/Ethereum.png"> | Access list transaction | `1` | [EIP-2930](https://eips.ethereum.org/EIPS/eip-2930) ([CIP-35](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0035.md)) | ❌ | Active 🟢 | Does not support dynamically changing _base fee_ per gas  | 
 | <img width="20" src="assets/images/Ethereum.png"> | Legacy transaction | `0` | [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) ([CIP-35](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0035.md)) | ❌ | Active 🟢 | Does not support dynamically changing _base fee_ per gas |
 
-### At risk of deprecation on Celo
+### Scheduled for deprecation on Celo
 
 | Chain | Transaction type  | # | Specification | Recommended | Support | Comment |
 |---|---|---|---|---|---|---|
@@ -194,15 +194,14 @@ they are commonly referred to as "type 0" transactions.
 
 ### <img width="14" src="assets/images/Celo.png"> Legacy transaction (`0`)
 
-> **Warning**
-> This transaction type is at risk of deprecation. A deprecation warning was published in the 
-> [Gingerbread hard fork](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md#deprecation-warning)
-> on [Sep 26, 2023](https://forum.celo.org/t/mainnet-alfajores-gingerbread-hard-fork-release-sep-26-17-00-utc/6499).
-
 > **NOTE**
 > This transaction is not compatible with Ethereum and has three Celo-specific 
 > parameters: `feecurrency`, `gatewayfeerecipient`, and `gatewayfee`.
 
+> **Warning**
+> This transaction type scheduled for deprecation. A deprecation warning was published in the 
+> [Gingerbread hard fork](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md#deprecation-warning)
+> on [Sep 26, 2023](https://forum.celo.org/t/mainnet-alfajores-gingerbread-hard-fork-release-sep-26-17-00-utc/6499).
 
 -   This transaction is defined as follows:
 
@@ -216,14 +215,14 @@ they are commonly referred to as "type 0" transactions.
 
 ### <img width="14" src="assets/images/Celo.png"> Dynamic fee transaction (`124`)
 
-> **Warning**
-> This transaction type is at risk of deprecation. A deprecation warning was published in the 
-> [Gingerbread hard fork](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md#deprecation-warning)
-> on [Sep 26, 2023](https://forum.celo.org/t/mainnet-alfajores-gingerbread-hard-fork-release-sep-26-17-00-utc/6499).
-
 > **NOTE**
 > This transaction is not compatible with Ethereum and has three Celo-specific 
 > parameters: `feecurrency`, `gatewayfeerecipient`, and `gatewayfee`.
+
+> **Warning**
+> This transaction type is scheduled for deprecation. A deprecation warning was published in the 
+> [Gingerbread hard fork](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md#deprecation-warning)
+> on [Sep 26, 2023](https://forum.celo.org/t/mainnet-alfajores-gingerbread-hard-fork-release-sep-26-17-00-utc/6499).
 
 -   This transaction is defined as follows:
 
