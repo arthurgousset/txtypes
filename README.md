@@ -46,11 +46,11 @@ Legend:
 
 | Client library | Language | <img width="20" src="assets/images/Ethereum.png"> | since | <img width="20" src="assets/images/Celo.jpg"> | since | Comment |
 |---|:---:|:---:|:---:|:---|---|---|
-| `viem` | TS/JS | ✅ | | ❌ | | [In progress](https://github.com/wagmi-dev/viem/pull/1379) | 
+| `viem` | TS/JS | ✅ | | ✅ | >[1.18.0](https://github.com/wagmi-dev/viem/releases/tag/viem%401.18.0) | --- | 
 | `ethers` | TS/JS | ✅ | |  ❌ | | Support via fork in <br> `celo-ethers-wrapper` | 
-| `celo-ethers-wrapper` | TS/JS | ✅ | | ✅ | >[v2.0.0](https://github.com/celo-tools/celo-ethers-wrapper/releases/tag/2.0.0) | --- |
+| `celo-ethers-wrapper` | TS/JS | ✅ | | ✅ | >[2.0.0](https://github.com/celo-tools/celo-ethers-wrapper/releases/tag/2.0.0) | --- |
 | `web3js` | TS/JS | ✅ | |  ❌ | | Support via fork in  <br> `contractkit` |
-| `contractkit` | TS/JS | ✅ |  | ✅ | >[v5.0.0](https://github.com/celo-org/celo-monorepo/releases/tag/v5.0) | --- |
+| `contractkit` | TS/JS | ✅ |  | ✅ | >[5.0.0](https://github.com/celo-org/celo-monorepo/releases/tag/v5.0) | --- |
 | `Web3j` | Java | ✅ | |  ❌ |  | --- |
 | `rust-ethers` | Rust |  ✅ | | ❌ | | --- |
 | `brownie` | Python |  ✅ | | ❌ | | --- |
