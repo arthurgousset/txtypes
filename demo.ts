@@ -69,7 +69,7 @@ async function demoDynamicFeeTransactionType() {
 }
 
 /**
- * Transaction type: 124 (0x7c)
+ * Transaction type: 123 (0x7b)
  * Name: "Dynamic fee"
  * Description: Celo dynamic fee transaction (with custom fee currency)
  */
