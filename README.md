@@ -1,3 +1,6 @@
+> **WARNING**
+> This repo has moved to: [celo-org/txtypes](https://github.com/celo-org/txtypes)
+
 # Transaction types on Celo
 
 This repo contains an explainer on transaction types supported on Celo and a demo to make specific 
