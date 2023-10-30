@@ -16,7 +16,7 @@ and a single Celo transaction type.
 
 | Chain | Transaction type  | # | Specification | Recommended | Support | Comment |
 |---|---|---|---|---|---|---|
-| <img width="20" src="assets/images/Celo.png"> | Dynamic fee transaction v2 | `123` | [CIP-64](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0064.md) | ✅ | Active 🟢 | Supports paying gas in custom fee currencies |
+| <img width="20" src="assets/images/Celo.jpg"> | Dynamic fee transaction v2 | `123` | [CIP-64](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0064.md) | ✅ | Active 🟢 | Supports paying gas in custom fee currencies |
 | <img width="20" src="assets/images/Ethereum.png"> | Dynamic fee transaction | `2` | [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) ([CIP-42](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0042.md)) | ✅ | Active 🟢 | Typical Ethereum transaction |
 | <img width="20" src="assets/images/Ethereum.png"> | Access list transaction | `1` | [EIP-2930](https://eips.ethereum.org/EIPS/eip-2930) ([CIP-35](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0035.md)) | ❌ | Active 🟢 | Does not support dynamically changing _base fee_ per gas  | 
 | <img width="20" src="assets/images/Ethereum.png"> | Legacy transaction | `0` | [Ethereum Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf) ([CIP-35](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0035.md)) | ❌ | Active 🟢 | Does not support dynamically changing _base fee_ per gas |
@@ -25,8 +25,8 @@ and a single Celo transaction type.
 
 | Chain | Transaction type  | # | Specification | Recommended | Support | Comment |
 |---|---|---|---|---|---|---|
-| <img width="20" src="assets/images/Celo.png"> | Dynamic fee transaction | `124` | [CIP-42](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0042.md) | ❌ | Security 🟠 | Deprecation warning published in [Gingerbread hard fork](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md#deprecation-warning) |
-| <img width="20" src="assets/images/Celo.png"> | Legacy transaction | `0` | Celo Mainnet launch ([Blockchain client v1.0.0](https://github.com/celo-org/celo-blockchain/tree/celo-v1.0.0)) | ❌ | Security 🟠 | Deprecation warning published in [Gingerbread hard fork](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md#deprecation-warning) |
+| <img width="20" src="assets/images/Celo.jpg"> | Dynamic fee transaction | `124` | [CIP-42](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0042.md) | ❌ | Security 🟠 | Deprecation warning published in [Gingerbread hard fork](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md#deprecation-warning) |
+| <img width="20" src="assets/images/Celo.jpg"> | Legacy transaction | `0` | Celo Mainnet launch ([Blockchain client v1.0.0](https://github.com/celo-org/celo-blockchain/tree/celo-v1.0.0)) | ❌ | Security 🟠 | Deprecation warning published in [Gingerbread hard fork](https://github.com/celo-org/celo-proposals/blob/8260b49b2ec9a87ded6727fec7d9104586eb0752/CIPs/cip-0062.md#deprecation-warning) |
 
 The stages of support are:
 
@@ -40,11 +40,11 @@ The stages of support are:
 Legend:
 
 -   <img width="12" src="assets/images/Ethereum.png"> = support for the recommended Ethereum transaction type (`2`)
--   <img width="12" src="assets/images/Celo.png"> = support for the recommended Celo transaction type (`123`)
+-   <img width="12" src="assets/images/Celo.jpg"> = support for the recommended Celo transaction type (`123`)
 -   ✅ = available
 -   ❌ = not available
 
-| Client library | Language | <img width="20" src="assets/images/Ethereum.png"> | since | <img width="20" src="assets/images/Celo.png"> | since | Comment |
+| Client library | Language | <img width="20" src="assets/images/Ethereum.png"> | since | <img width="20" src="assets/images/Celo.jpg"> | since | Comment |
 |---|:---:|:---:|:---:|:---|---|---|
 | `viem` | TS/JS | ✅ | | ❌ | | [In progress](https://github.com/wagmi-dev/viem/pull/1379) | 
 | `ethers` | TS/JS | ✅ | |  ❌ | | Support via fork in <br> `celo-ethers-wrapper` | 
@@ -194,7 +194,7 @@ they are commonly referred to as "type 0" transactions.
     on [Mar 8, 2022](https://blog.celo.org/brewing-the-espresso-hardfork-92a696af1a17) as specified
     in [CIP-42: Modification to EIP-1559](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0042.md)
 
-### <img width="14" src="assets/images/Celo.png"> Legacy transaction (`0`)
+### <img width="14" src="assets/images/Celo.jpg"> Legacy transaction (`0`)
 
 > **NOTE**
 > This transaction is not compatible with Ethereum and has three Celo-specific 
@@ -215,7 +215,7 @@ they are commonly referred to as "type 0" transactions.
     [Apr 22, 2020](https://dune.com/queries/3106924/5185945) as specified in 
     [Blockchain client v1.0.0](https://github.com/celo-org/celo-blockchain/tree/celo-v1.0.0).
 
-### <img width="14" src="assets/images/Celo.png"> Dynamic fee transaction (`124`)
+### <img width="14" src="assets/images/Celo.jpg"> Dynamic fee transaction (`124`)
 
 > **NOTE**
 > This transaction is not compatible with Ethereum and has three Celo-specific 
@@ -237,7 +237,7 @@ they are commonly referred to as "type 0" transactions.
     on [Mar 8, 2022](https://blog.celo.org/brewing-the-espresso-hardfork-92a696af1a17) as specified 
     in [CIP-42: Modification to EIP-1559](https://github.com/celo-org/celo-proposals/blob/master/CIPs/cip-0042.md).
 
-### <img width="14" src="assets/images/Celo.png"> Dynamic fee transaction v2 (`123`)
+### <img width="14" src="assets/images/Celo.jpg"> Dynamic fee transaction v2 (`123`)
 
 > **NOTE**
 > This transaction is not compatible with Ethereum and has one Celo-specific 
